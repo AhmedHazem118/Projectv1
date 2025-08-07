@@ -1,5 +1,8 @@
 pipeline {
     agent any
+environoment{
+Version = '1.0'
+}
 
     stages {
         stage("build") {
@@ -14,7 +17,7 @@ pipeline {
       }
       stage("deploy"){
           steps {
-        echo 'Deployed';
+        echo 'Deployed version ${Version};
       }
       }
     }
