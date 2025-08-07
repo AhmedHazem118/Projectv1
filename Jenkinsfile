@@ -1,5 +1,6 @@
 pipeline {
     agent any
+credit = credential('User')
 environment{
 Version = '1.0'
 }
@@ -17,6 +18,9 @@ Version = '1.0'
       }
       stage("deploy"){
           steps {
+echo "Add credentials ${credit}";
+
+
         echo "Deployed version ${Version}";
       }
       }
