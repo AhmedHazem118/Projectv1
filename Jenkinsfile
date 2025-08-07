@@ -17,7 +17,7 @@ Version = '1.0'
       }
       stage("deploy"){
           steps {
-        echo 'Deployed version ${Version};
+        echo "Deployed version ${Version}";
       }
       }
     }
