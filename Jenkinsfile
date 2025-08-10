@@ -2,7 +2,7 @@
 pipeline {
     agent any
 
-    parameters {
+    parameters 
         choice(name: 'Versions', choices: ['1.0', '1.1'], description: 'Choose Version')
         booleanParam(name: 'Exec', defaultValue: true, description: 'Do you want to test')  // Fixed space in parameter name
     }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Fixed: Proper Groovy syntax for method calls
-                  def sc = load "${env.SCRIPT_FILE}" 
+                   sc = load "${env.SCRIPT_FILE}" 
                     sc.build()  // Added parentheses for method call
                 }
             }
