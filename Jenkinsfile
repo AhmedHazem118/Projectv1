@@ -1,6 +1,9 @@
 pipeline {
     agent any
-credit = credential('User')
+#credit = credential('User')
+parameters{
+choice (name: 'Version',choice: ['1.0','1.1'], description: 'Choose Version')
+booleanParam (name: 'Exec', defaultValue: true, description: 'Build??' )
 environment{
 Version = '1.0'
 }
@@ -13,15 +16,21 @@ Version = '1.0'
         }
       stage("test"){
           steps {
+when {
+expression {
+params.Exec
+}
+}
         echo 'This tests';
       }
       }
       stage("deploy"){
           steps {
-echo "Add credentials ${credit}";
+#echo "Add credentials ${credit}";
+echo "Deployed version is {$params.Version}"
 
 
-        echo "Deployed version ${Version}";
+#        echo "Deployed version ${Version}";
       }
       }
     }
