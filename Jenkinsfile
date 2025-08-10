@@ -1,3 +1,4 @@
+def sc
 pipeline {
     agent any
 
@@ -12,23 +13,28 @@ pipeline {
 
     stages {
         stage("Build") {
+            script {
+                sc='groovy.script'
+                sc.build
+            }
             steps {
                 echo 'This Builds'
             }
         }
         
         stage("Test") {
+            script{
+                sc.test
+            }
             when {
                 expression { params.Exec }
-            }
-            steps {
-                echo 'This tests'
             }
         }
         
         stage("Deploy") {
-            steps {
-                echo "Deployed version is ${params.Version}"
+            script {
+                sc.deploy
+            }
             }
         }
     }
