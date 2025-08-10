@@ -1,3 +1,4 @@
+def sc
 pipeline {
     agent any
 
