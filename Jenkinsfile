@@ -1,6 +1,6 @@
 pipeline {
     agent any
-#credit = credential('User')
+
 parameters{
 choice (name: 'Version',choice: ['1.0','1.1'], description: 'Choose Version')
 booleanParam (name: 'Exec', defaultValue: true, description: 'Build??' )
@@ -26,7 +26,6 @@ params.Exec
       }
       stage("deploy"){
           steps {
-#echo "Add credentials ${credit}";
 echo "Deployed version is {$params.Version}"
 
 
