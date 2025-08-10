@@ -11,7 +11,6 @@ pipeline {
         VERSION = '1.0'  // Default value if not overridden by parameter
     }
 
-    stages {
         stage("Build") {
             script {
                 sc='groovy.script'
@@ -21,7 +20,7 @@ pipeline {
                 echo 'This Builds'
             }
         }
-    }
+    
         
         stage("Test") {
             script{
