@@ -18,7 +18,6 @@ pipeline {
                     sc = 'groovy.script' 
                     sc.build()  // Added parentheses for method call
                 }
-                echo 'This Builds'
             }
         }
         
