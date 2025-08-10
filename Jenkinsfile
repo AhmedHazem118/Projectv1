@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         choice(name: 'Version', choices: ['1.0', '1.1'], description: 'Choose Version')
-        booleanParam(name: 'Exec', defaultValue: true, description: 'Build??')
+        booleanParam(name: ' Exec', defaultValue: true, description: 'Do you want to test')
     }
 
     environment {
