@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        VERSION = param.Version  // Default value if not overridden by parameter
+        VERSION = params.Version  // Default value if not overridden by parameter
     }
 
     stages {
