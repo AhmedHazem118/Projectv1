@@ -17,8 +17,7 @@ pipeline {
                 script {
                     // Fixed: Proper Groovy syntax for method calls
                   def sc = load "${env.SCRIPT_FILE}" 
-                    Sc = sc
-                    Sc.build()  // Added parentheses for method call
+                    sc.build()  // Added parentheses for method call
                 }
             }
         }
@@ -29,7 +28,7 @@ pipeline {
             }
             steps {
                 script {
-                    Sc.test()  // Added parentheses for method call
+                    sc.test()  // Added parentheses for method call
                 }
             
             }
@@ -38,7 +37,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    Sc.deploy()  // Added parentheses for method call
+                    sc.deploy()  // Added parentheses for method call
                 }
                 echo "Deployed version is ${params.Versions}"
             }
