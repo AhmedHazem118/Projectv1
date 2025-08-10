@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        VERSION = params.Version  // Default value if not overridden by parameter
+       SCRIPT_FILE = params.Versions == '1.0' ? 'groovy.script' : 'groovy.scriptv1'  // Default value if not overridden by parameter
     }
 
     stages {
