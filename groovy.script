@@ -7,7 +7,7 @@ echo 'Testing...'
 }
 
 def deploy() {
-echo 'Deploying....'
+echo 'Deploying.... ${params.Versions}'
 }
 
 return this
