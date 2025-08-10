@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Fixed: Proper Groovy syntax for method calls
-                  def sc = load "groovy.script" 
+                  def sc = load "${env.SCRIPT_FILE}" 
                     Sc = sc
                     Sc.build()  // Added parentheses for method call
                 }
