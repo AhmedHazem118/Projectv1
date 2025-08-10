@@ -28,8 +28,6 @@ params.Exec
           steps {
 echo "Deployed version is {$params.Version}"
 
-
-#        echo "Deployed version ${Version}";
       }
       }
     }
