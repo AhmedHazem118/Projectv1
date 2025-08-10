@@ -1,23 +1,21 @@
-
 pipeline {
     agent any
 
-    parameters 
+    parameters {
         choice(name: 'Versions', choices: ['1.0', '1.1'], description: 'Choose Version')
-        booleanParam(name: 'Exec', defaultValue: true, description: 'Do you want to test')  // Fixed space in parameter name
+        booleanParam(name: 'Exec', defaultValue: true, description: 'Do you want to test')
     }
 
     environment {
-       SCRIPT_FILE = "${params.Versions == '1.0' ? 'groovy.script' : 'groovy.scriptv1'}"  // Default value if not overridden by parameter
+        SCRIPT_FILE = "${params.Versions == '1.0' ? 'groovy.script' : 'groovy.scriptv1'}"
     }
 
     stages {
         stage("Build") {
             steps {
                 script {
-                    // Fixed: Proper Groovy syntax for method calls
-                   sc = load "${env.SCRIPT_FILE}" 
-                    sc.build()  // Added parentheses for method call
+                    sc = load "${env.SCRIPT_FILE}"
+                    sc.build()
                 }
             }
         }
@@ -28,16 +26,15 @@ pipeline {
             }
             steps {
                 script {
-                    sc.test()  // Added parentheses for method call
+                    sc.test()
                 }
-            
             }
         }
         
         stage("Deploy") {
             steps {
                 script {
-                    sc.deploy()  // Added parentheses for method call
+                    sc.deploy()
                 }
                 echo "Deployed version is ${params.Versions}"
             }
