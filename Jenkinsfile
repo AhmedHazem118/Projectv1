@@ -1,35 +1,35 @@
 pipeline {
     agent any
 
-parameters{
-choice (name: 'Version',choices: ['1.0','1.1'], description: 'Choose Version')
-booleanParam (name: 'Exec', defaultValue: true, description: 'Build??' )
-}
-environment{
-Version = '1.0'
-}
+    parameters {
+        choice(name: 'Version', choices: ['1.0', '1.1'], description: 'Choose Version')
+        booleanParam(name: 'Exec', defaultValue: true, description: 'Build??')
+    }
+
+    environment {
+        VERSION = '1.0'  // Default value if not overridden by parameter
+    }
 
     stages {
-        stage("build") {
+        stage("Build") {
             steps {
-            echo 'This Builds';
+                echo 'This Builds'
             }
         }
-      stage("test"){
-          steps {
-when {
-expression {
-params.Exec
-}
-}
-        echo 'This tests';
-      }
-      }
-      stage("deploy"){
-          steps {
-echo "Deployed version is {$params.Version}"
-
-      }
-      }
+        
+        stage("Test") {
+            when {
+                expression { params.Exec }
+            }
+            steps {
+                echo 'This tests'
+            }
+        }
+        
+        stage("Deploy") {
+            steps {
+                echo "Deployed version is ${params.Version}"
+            }
+        }
     }
 }
