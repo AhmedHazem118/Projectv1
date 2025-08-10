@@ -7,7 +7,7 @@ echo 'Testing...'
 }
 
 def deploy() {
-echo 'Deploying.... ${params.Versions}'
+echo 'Deploying.... ${env.Versions}'
 }
 
 return this
