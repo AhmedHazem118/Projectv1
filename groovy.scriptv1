@@ -1,13 +1,13 @@
 def build() {
-echo 'Building...'
+echo 'Building...V1 '
 }
 
 def test() {
-echo 'Testing...'
+echo 'Testing... V1'
 }
 
 def deploy() {
-echo 'Deploying.... ${env.Versions}'
+echo "Deploying.... ${env.Versions} V1"
 }
 
 return this
