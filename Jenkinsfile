@@ -1,4 +1,4 @@
-def sc = load "groovy.script" 
+
 pipeline {
     agent any
 
@@ -16,8 +16,9 @@ pipeline {
             steps {
                 script {
                     // Fixed: Proper Groovy syntax for method calls
-                   
-                    sc.build()  // Added parentheses for method call
+                   def sc = load "groovy.script" 
+                    Sc = sc
+                    Sc.build()  // Added parentheses for method call
                 }
             }
         }
@@ -28,7 +29,7 @@ pipeline {
             }
             steps {
                 script {
-                    sc.test()  // Added parentheses for method call
+                    Sc.test()  // Added parentheses for method call
                 }
                 echo 'This tests'
             }
@@ -37,7 +38,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    sc.deploy()  // Added parentheses for method call
+                    Sc.deploy()  // Added parentheses for method call
                 }
                 echo "Deployed version is ${params.Versions}"
             }
