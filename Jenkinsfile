@@ -2,7 +2,7 @@ pipeline {
     agent any
 
 parameters{
-choice (name: 'Version',choice: ['1.0','1.1'], description: 'Choose Version')
+choices (name: 'Version',choice: ['1.0','1.1'], description: 'Choose Version')
 booleanParam (name: 'Exec', defaultValue: true, description: 'Build??' )
 }
 environment{
