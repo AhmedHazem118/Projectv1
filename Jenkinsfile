@@ -1,4 +1,4 @@
-def sc
+def sc = load "groovy.script" 
 pipeline {
     agent any
 
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Fixed: Proper Groovy syntax for method calls
-                    sc = load "groovy.script" 
+                   
                     sc.build()  // Added parentheses for method call
                 }
             }
