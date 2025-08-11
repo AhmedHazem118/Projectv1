@@ -11,6 +11,34 @@ pipeline {
     }
 
     stages {
+        stage("Checkout Branch") {
+            steps {
+                script {
+                    def branchName = ''
+                    switch (params.Versions) {
+                        case '1.0':
+                            branchName = 'main'
+                            break
+                        case '1.1':
+                            branchName = 'v1'
+                            break
+                        default:
+                            error "Unknown version: ${params.Versions}"
+                    }
+
+                    echo "Checking out branch: ${branchName}"
+
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: "*/${branchName}"]],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/your-org/your-repo.git'
+                        ]]
+                    ])
+                }
+            }
+        }
+
         stage("Build") {
             steps {
                 script {
@@ -41,3 +69,4 @@ pipeline {
         }
     }
 }
+
